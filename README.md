@@ -1,4 +1,6 @@
+#reminds
 
-分段
+  Tables about relationships, such as relationship between DCS-SIS, DCS-GAS, Point-Camera, 
+  define on TARGET side or ONE side, 
 
-一期，先设计DCS，SIS，GAS自己的表结构"# try_django_model_design" 
+
