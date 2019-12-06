@@ -63,7 +63,7 @@ class CameraBase(models.Model):
     camera_url = models.URLField(max_length=200)
     camera_category = models.CharField()
     camera_desc = models.TextField()
-
+    camera_connection_status = models.BooleanField(default=True)
     add_time = models.DateTimeField()
 
     #  camera_initial_image = models.ImageField()
