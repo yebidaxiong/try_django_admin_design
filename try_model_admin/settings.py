@@ -37,6 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'Abstract_Base_Interface',
+    'DCS_Point_Interface',
+    'SIS_Point_Interface',
+    'GAS_Point_Interface',
+    'Event_Interface',
+    'Flag_Interface',
+    'Log_Interface',
+
 ]
 
 MIDDLEWARE = [

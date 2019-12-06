@@ -2,6 +2,10 @@ from datetime import datetime
 
 from django.db import models
 
+"""
+Please remember, currently there is no tables about image or video live stream processing
+"""
+
 
 # Create your models here.
 
@@ -9,7 +13,6 @@ class CategoryBase(models.Model):
     """
     category base class, for DCS, SIS, GAS point and Camera Category class to inherit, no table built.
     """
-
     id = models.AutoField(primary_key=True)
     category_name = models.CharField(default="", max_length=30, verbose_name="分类名", help_text="分类名")
     category_code = models.CharField(default="", max_length=30, verbose_name="分类code", help_text="分类code")
@@ -108,3 +111,5 @@ class LogBase(models.Model):
 
     class Meta:
         abstract = True
+
+

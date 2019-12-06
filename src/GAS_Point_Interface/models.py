@@ -20,6 +20,8 @@ class GASPointCategory(CategoryBase):
     """
     GAS point category attribute references, means GAS point belong to which area, opc, or computer
     """
+
+    # this should be defined by customers, factories,
     GAS_CATEGORY_TYPE = (
         (1, "GAS一级类别"),
         (2, "GAS二级类别"),
@@ -34,3 +36,22 @@ class GASPointCategory(CategoryBase):
         verbose_name = "GAS测点分类"
         verbose_name_plural = verbose_name
         db_table = "SCMS_GAS_Category"
+
+
+class GASPointOnMapping(models.Model):
+    """
+    This is a very important table stores relationships to GAS point from DCS points and also SIS GAS, one-many,
+    for offline data processing, feature engineering, and online ML model running
+    """
+
+    GAS_point_code = models.CharField()
+    DCS_point_code = models.CharField()
+    # according to model selection, there may be several kinds of correlation weight, not sure about this.
+    # Random Forest has no weights.
+    correlation_weight = models.FloatField()
+
+    class Meta:
+        verbose_name = "GAS目标点的特征映射"
+        verbose_name_plural = verbose_name
+        db_table = "SCMS_GAS_DP_FE_ML"
+
