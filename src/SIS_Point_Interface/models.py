@@ -15,6 +15,9 @@ class SISPoint(PointBase):
         verbose_name_plural = verbose_name
         db_table = "SCMS_SIS_Point_Reference"
 
+    def __str__(self):
+        return PointBase.point_name
+
 
 class SISPointCategory(CategoryBase):
     """
@@ -35,14 +38,17 @@ class SISPointCategory(CategoryBase):
         verbose_name_plural = verbose_name
         db_table = "SCMS_SIS_Category"
 
+    def __str__(self):
+        return CategoryBase.category_name
+
 
 class SISPointOnMapping(models.Model):
     """
     This is a very important table stores relationships to SIS point from DCS points and also SIS GAS, one-many,
     for offline data processing, feature engineering, and online ML model running
     """
-    SIS_point_code = models.CharField()
-    DCS_point_code = models.CharField()
+    SIS_point_code = models.CharField(max_length=30)
+    DCS_point_code = models.CharField(max_length=30)
     # according to model selection, there may be several kinds of correlation weight, not sure about this.
     # Random Forest has no weights.
     correlation_weight = models.FloatField()

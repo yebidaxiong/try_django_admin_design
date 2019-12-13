@@ -14,16 +14,16 @@ class CategoryBase(models.Model):
     category base class, for DCS, SIS, GAS point and Camera Category class to inherit, no table built.
     """
     id = models.AutoField(primary_key=True)
-    category_name = models.CharField(default="", max_length=30, verbose_name="分类名", help_text="分类名")
-    category_code = models.CharField(default="", max_length=30, verbose_name="分类code", help_text="分类code")
-    category_desc = models.TextField(default="", verbose_name="分类描述", help_text="分类描述")
+    category_name = models.CharField(default="", max_length=30, blank=True, verbose_name="分类名", help_text="分类名")
+    category_code = models.CharField(default="", max_length=30, blank=True, verbose_name="分类code", help_text="分类code")
+    category_desc = models.TextField(default="", blank=True, verbose_name="分类描述", help_text="分类描述")
     # category_type = models.CharField() # write here just for remind, should be in each class object
     # each point DCS, SIS, GAS has their own category type
-    parent_category = models.ForeignKey("self", null=True, verbose_name="父类目级", help_text="父目录",
+    parent_category = models.ForeignKey("self", null=True, blank=True, verbose_name="父类目级", help_text="父目录",
                                         related_name="sub_cat", on_delete=models.CASCADE)
     # is_tab = models.BooleanField(default=False) DCS has no is_tab, SIS and GAS has is_tab
 
-    add_time = models.DateTimeField(datetime.now(), verbose_name="添加时间")
+    add_time = models.DateTimeField(default=datetime.now, blank=True, verbose_name="添加时间", help_text="添加时间")
 
     class Meta:
         abstract = True
@@ -34,18 +34,23 @@ class PointBase(models.Model):
     point base class, for DCS, SIS, GAS point class to inherit, no table built.
     """
     id = models.AutoField(primary_key=True)
-    point_name = models.CharField()
-    point_code = models.CharField()
+    point_name = models.CharField(default="", max_length=30, blank=True, verbose_name="测点名称", help_text="测点名称")
+    point_code = models.CharField(default="", max_length=30, blank=True, verbose_name="测点位号", help_text="测点位号")
     # point_category = models.CharField()
-    point_desc = models.TextField()
-    point_connection_status = models.BooleanField(default=True)  # flag of opc connection
-    point_add_to_service = models.BooleanField(default=False)  # flag of offering service to app
-    point_H_limitation = models.FloatField()
-    point_L_limitation = models.FloatField()
-    point_HH_limitation = models.FloatField()
-    point_LL_limitation = models.FloatField()
+    point_desc = models.TextField(default="", blank=True, verbose_name="测点描述", help_text="测点描述")
+    # flag of opc connection
+    point_connection_status = models.BooleanField(default=False, blank=True,
+                                                  verbose_name="测点连接状况", help_text="测点连接状况")
+    # flag of offering service to app
+    point_add_to_service = models.BooleanField(default=False, blank=True,
+                                               verbose_name="测点添加到界面", help_text="测点添加到界面")
+    point_H_limitation = models.FloatField(default=0, blank=True, verbose_name="测点上限", help_text="测点上限", )
+    point_L_limitation = models.FloatField(default=0, blank=True, verbose_name="测点下限", help_text="测点下限", )
+    point_HH_limitation = models.FloatField(default=0, blank=True, verbose_name="测点上上限", help_text="测点上上限", )
+    point_LL_limitation = models.FloatField(default=0, blank=True, verbose_name="测点下下限", help_text="测点下下限", )
+    point_realtime_value = models.FloatField(default=0, blank=True, verbose_name="测点当前值", help_text="测点当前值", )
 
-    add_time = models.DateTimeField()
+    add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间", help_text="添加时间")
 
     # point_camera_bind = models.URLField()  # wish to bind cameras to point, one point has several cameras, but need
     # another table
@@ -59,12 +64,13 @@ class CameraBase(models.Model):
     camera base class, for camera class to inherit, no table built.
     """
     id = models.AutoField(primary_key=True)
-    camera_name = models.CharField()
-    camera_url = models.URLField(max_length=200)
-    camera_category = models.CharField()
-    camera_desc = models.TextField()
-    camera_connection_status = models.BooleanField(default=True)
-    add_time = models.DateTimeField()
+    camera_name = models.CharField(default="", max_length=30, blank=True, verbose_name="摄像头名称", help_text="摄像头名称")
+    camera_url = models.URLField(default="", max_length=200, blank=True, verbose_name="摄像头位号", help_text="摄像头位号")
+    camera_category = models.CharField(default="", max_length=30, blank=True, verbose_name="摄像头类别", help_text="摄像头类别")
+    camera_desc = models.TextField(default="", blank=True, verbose_name="摄像头描述", help_text="摄像头描述")
+    camera_connection_status = models.BooleanField(default=True, blank=True, verbose_name="摄像头连接状态",
+                                                   help_text="摄像头连接状态")
+    add_time = models.DateTimeField(default=datetime.now, blank=True, verbose_name="添加时间", help_text="添加时间")
 
     #  camera_initial_image = models.ImageField()
 
@@ -78,14 +84,15 @@ class EventBase(models.Model):
     event has many sources and restrictions, need to analyze carefully, no table built.
     """
     id = models.AutoField(primary_key=True)
-    event_source = models.CharField()
-    event_type = models.CharField()
-    event_happened_time = models.DateTimeField()  # this is add time I suppose
-    event_detail_desc = models.TextField()
-    event_status = models.BooleanField(default=False)
-    event_level = models.IntegerField()
-    event_analysis = models.TextField()
-    is_tab = models.BooleanField(default=False)
+    event_source = models.CharField(max_length=30, verbose_name="事件源", help_text="事件源")
+    event_type = models.CharField(max_length=30, verbose_name="事件类型", help_text="事件类型")
+    event_happened_time = models.DateTimeField(verbose_name="事件发生时间", help_text="事件发生时间")  # this is add time I suppose
+    event_detail_desc = models.TextField(verbose_name="事件详细信息", help_text="事件详细信息")
+    event_status = models.BooleanField(default=False, verbose_name="事件状态", help_text="事件状态")
+    event_level = models.IntegerField(verbose_name="事件级别", help_text="事件级别")
+    event_analysis = models.TextField(verbose_name="事件分析", help_text="事件分析")
+
+    # is_tab = models.BooleanField(default=False, verbose_name="添加时间", help_text="添加时间")
 
     class Meta:
         abstract = True
@@ -96,7 +103,7 @@ class FlagBase(models.Model):
     flag base class, for inherit, maybe not used
     """
     id = models.AutoField(primary_key=True)
-    add_time = models.DateTimeField()
+    add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间", help_text="添加时间")
 
     class Meta:
         abstract = True
@@ -107,9 +114,7 @@ class LogBase(models.Model):
     Log base class
     """
     id = models.AutoField(primary_key=True)
-    add_time = models.DateTimeField()
+    add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间", help_text="添加时间")
 
     class Meta:
         abstract = True
-
-
