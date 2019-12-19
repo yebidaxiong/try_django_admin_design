@@ -16,6 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from GAS_Point_Interface.views import get_gas_realtime_data, get_gas_flag_data
+from SIS_Point_Interface.views import get_sis_realtime_data, get_sis_flag_data
+from try_model_admin import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.indexrender),
+
+    # restful api
+    path('sis_realtime_data/', get_sis_realtime_data,),
+    path('sis_flag_data/', get_sis_flag_data,),
+    path('gas_realtime_data/', get_gas_realtime_data),
+    path('gas_flag_data/', get_gas_flag_data),
 ]

@@ -57,3 +57,111 @@ class SISPointOnMapping(models.Model):
         verbose_name = "SIS目标点的特征映射"
         verbose_name_plural = verbose_name
         db_table = "SCMS_SIS_DP_FE_ML"
+
+
+class SISRealtime(models.Model):
+
+    # 一个时间 TODO:
+    add_time = models.DateTimeField(auto_now_add=True)
+    point_1 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_2 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_3 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_4 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_5 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_6 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_7 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_8 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_9 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_10 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+
+    point_11 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_12 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_13 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_14 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_15 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_16 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_17 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_18 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_19 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_20 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+
+    point_21 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_22 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_23 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_24 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_25 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_26 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_27 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_28 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_29 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_30 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+
+    point_31 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_32 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_33 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_34 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_35 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_36 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_37 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_38 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_39 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+    point_40 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
+
+    class Meta:
+        verbose_name = "SIS点实时数据"
+        verbose_name_plural = verbose_name
+        db_table = "SIS_REALTIME"
+
+
+class SISFlag(models.Model):
+
+    # 一个时间 TODO:
+    add_time = models.DateTimeField(auto_now_add=True)
+    flag_1 = models.BooleanField(default=False, blank=True, null=True)
+    flag_2 = models.BooleanField(default=False, null=True, blank=True)
+    flag_3 = models.BooleanField(default=False, null=True, blank=True)
+    flag_4 = models.BooleanField(default=False, null=True, blank=True)
+    flag_5 = models.BooleanField(default=False, null=True, blank=True)
+    flag_6 = models.BooleanField(default=False, null=True, blank=True)
+    flag_7 = models.BooleanField(default=False, null=True, blank=True)
+    flag_8 = models.BooleanField(default=False, null=True, blank=True)
+    flag_9 = models.BooleanField(default=False, null=True, blank=True)
+    flag_10 = models.BooleanField(default=False, null=True, blank=True)
+
+    flag_11 = models.BooleanField(default=False, null=True, blank=True)
+    flag_12 = models.BooleanField(default=False, null=True, blank=True)
+    flag_13 = models.BooleanField(default=False, null=True, blank=True)
+    flag_14 = models.BooleanField(default=False, null=True, blank=True)
+    flag_15 = models.BooleanField(default=False, null=True, blank=True)
+    flag_16 = models.BooleanField(default=False, null=True, blank=True)
+    flag_17 = models.BooleanField(default=False, null=True, blank=True)
+    flag_18 = models.BooleanField(default=False, null=True, blank=True)
+    flag_19 = models.BooleanField(default=False, null=True, blank=True)
+    flag_20 = models.BooleanField(default=False, null=True, blank=True)
+
+    flag_21 = models.BooleanField(default=False, null=True, blank=True)
+    flag_22 = models.BooleanField(default=False, null=True, blank=True)
+    flag_23 = models.BooleanField(default=False, null=True, blank=True)
+    flag_24 = models.BooleanField(default=False, null=True, blank=True)
+    flag_25 = models.BooleanField(default=False, null=True, blank=True)
+    flag_26 = models.BooleanField(default=False, null=True, blank=True)
+    flag_27 = models.BooleanField(default=False, null=True, blank=True)
+    flag_28 = models.BooleanField(default=False, null=True, blank=True)
+    flag_29 = models.BooleanField(default=False, null=True, blank=True)
+    flag_30 = models.BooleanField(default=False, null=True, blank=True)
+
+    flag_31 = models.BooleanField(default=False, null=True, blank=True)
+    flag_32 = models.BooleanField(default=False, null=True, blank=True)
+    flag_33 = models.BooleanField(default=False, null=True, blank=True)
+    flag_34 = models.BooleanField(default=False, null=True, blank=True)
+    flag_35 = models.BooleanField(default=False, null=True, blank=True)
+    flag_36 = models.BooleanField(default=False, null=True, blank=True)
+    flag_37 = models.BooleanField(default=False, null=True, blank=True)
+    flag_38 = models.BooleanField(default=False, null=True, blank=True)
+    flag_39 = models.BooleanField(default=False, null=True, blank=True)
+    flag_40 = models.BooleanField(default=False, null=True, blank=True)
+
+    class Meta:
+        verbose_name = "SIS点实时报警"
+        verbose_name_plural = verbose_name
+        db_table = "SIS_Flag"
