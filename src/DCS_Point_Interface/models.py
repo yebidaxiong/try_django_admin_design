@@ -15,7 +15,7 @@ class DCSPoint(PointBase):
     class Meta:
         verbose_name = "DCS测点属性"
         verbose_name_plural = verbose_name
-        db_table = "SCMS_DCS_Point_Reference"
+        db_table = "SMCS_DCS_Point_Reference"
 
     def __str__(self):
         return PointBase.point_name
@@ -37,7 +37,7 @@ class DCSPointCategory(CategoryBase):
     class Meta:
         verbose_name = "DCS测点分类"
         verbose_name_plural = verbose_name
-        db_table = "SCMS_DCS_Category"
+        db_table = "SMCS_DCS_Category"
 
     def __str__(self):
         return CategoryBase.category_name

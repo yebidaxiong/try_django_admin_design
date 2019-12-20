@@ -13,7 +13,7 @@ class GASPoint(PointBase):
     class Meta:
         verbose_name = "GAS测点属性表"
         verbose_name_plural = verbose_name
-        db_table = "SCMS_GAS_Point_Reference"
+        db_table = "SMCS_GAS_Point_Reference"
 
         def __str__(self):
             return PointBase.point_name
@@ -38,7 +38,7 @@ class GASPointCategory(CategoryBase):
     class Meta:
         verbose_name = "GAS测点分类"
         verbose_name_plural = verbose_name
-        db_table = "SCMS_GAS_Category"
+        db_table = "SMCS_GAS_Category"
 
     def __str__(self):
         return CategoryBase.category_name
@@ -59,7 +59,7 @@ class GASPointOnMapping(models.Model):
     class Meta:
         verbose_name = "GAS目标点的特征映射"
         verbose_name_plural = verbose_name
-        db_table = "SCMS_GAS_DP_FE_ML"
+        db_table = "SMCS_GAS_DP_FE_ML"
 
 
 class GASRealtime(models.Model):
@@ -124,7 +124,7 @@ class GASRealtime(models.Model):
     class Meta:
         verbose_name = "GAS点实时数据"
         verbose_name_plural = verbose_name
-        db_table = "GAS_REALTIME"
+        db_table = "SMCS_GAS_REALTIME"
 
 
 class GASFlag(models.Model):
@@ -189,4 +189,4 @@ class GASFlag(models.Model):
     class Meta:
         verbose_name = "GAS点实时报警"
         verbose_name_plural = verbose_name
-        db_table = "GAS_Flag"
+        db_table = "SMCS_GAS_Flag"
