@@ -61,7 +61,7 @@ class SISPointOnMapping(models.Model):
 
 class SISRealtime(models.Model):
 
-    # 一个时间 TODO:
+
     add_time = models.DateTimeField(auto_now_add=True)
     arsa_41301 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
     prcsa_4201 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
@@ -115,7 +115,7 @@ class SISRealtime(models.Model):
 
 class SISFlag(models.Model):
 
-    # 一个时间 TODO:
+
     add_time = models.DateTimeField(auto_now_add=True)
     arsa_41301_flag = models.BooleanField(default=False, blank=True, null=True)
     prcsa_4201_flag = models.BooleanField(default=False, null=True, blank=True)

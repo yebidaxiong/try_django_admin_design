@@ -16,8 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from GAS_Point_Interface.views import get_gas_realtime_data, get_gas_flag_data
-from SIS_Point_Interface.views import get_sis_realtime_data, get_sis_flag_data
+from GAS_Point_Interface.views import get_gas_realtime_data, get_gas_flag_data, get_gas_column_list
+from SIS_Point_Interface.views import get_sis_realtime_data, get_sis_flag_data, get_sis_column_list, \
+    post_data_analysis_traffic_search
 from try_model_admin import views
 
 urlpatterns = [
@@ -25,8 +26,13 @@ urlpatterns = [
     path('', views.indexrender),
 
     # restful api
-    path('sis_realtime_data/', get_sis_realtime_data,),
-    path('sis_flag_data/', get_sis_flag_data,),
+    path('sis_realtime_data/', get_sis_realtime_data),
+    path('sis_flag_data/', get_sis_flag_data),
     path('gas_realtime_data/', get_gas_realtime_data),
     path('gas_flag_data/', get_gas_flag_data),
+
+    # for sis and gas get column name
+    path('sis_column_list', get_sis_column_list),
+    path('gas_column_list', get_gas_column_list),
+    path('data_analysis_traffic_search', post_data_analysis_traffic_search),
 ]

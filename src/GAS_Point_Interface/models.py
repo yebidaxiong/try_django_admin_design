@@ -64,7 +64,7 @@ class GASPointOnMapping(models.Model):
 
 class GASRealtime(models.Model):
 
-    # 一个时间 TODO:
+
     add_time = models.DateTimeField(auto_now_add=True)
     point_1 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
     point_2 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
@@ -129,7 +129,7 @@ class GASRealtime(models.Model):
 
 class GASFlag(models.Model):
 
-    # 一个时间 TODO:
+
     add_time = models.DateTimeField(auto_now_add=True)
     flag_1 = models.BooleanField(default=False, blank=True, null=True)
     flag_2 = models.BooleanField(default=False, null=True, blank=True)
