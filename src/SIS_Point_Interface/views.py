@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from django.core.serializers.json import DjangoJSONEncoder
+from django.core import serializers
 from django.shortcuts import render
 import json
 import time
@@ -44,23 +44,16 @@ def get_sis_column_list(request):
 def post_data_analysis_traffic_search(request):
     post_content = json.loads(request.body, encoding='utf-8')
     # 这个地方要根据发来的三个值把数据掐出来
-    print(post_content['startTime'])
-    print(post_content['endTime'])
+    # print(post_content['startTime'])
+    # print(post_content['endTime'])
     start_date = datetime.strptime(post_content['startTime'], '%Y-%m-%d %H:%M:%S')
     end_date = datetime.strptime(post_content['endTime'], '%Y-%m-%d %H:%M:%S')
-    print(type(start_date))
-    print(type(end_date))
+    # print(type(start_date))
+    # print(type(end_date))
     p1 = re.compile(r'[(](.*?)[)]', re.S)
     column_name = re.findall(p1, post_content['node'][0]['label'])[0]
-    print(column_name)
     # print(column_name)
-    # cursor = connection.cursor()
-    # cursor.execute("select %s from smcs_sis_realtime where add_time between startTime and endTime"
-    #                "values(%s, %s, %s)")
-    # record = cursor.fetchall()
-    # print(record)
-    # 这个地方需要处理 其他地方没什么问题 TODO:这个地方需要处理 其他地方没什么问题
-    result = models.SISRealtime.objects.values(column_name).filter(add_time__range=(start_date, end_date))
-    # serialized_q = json.dumps(list(result), cls=DjangoJSONEncoder)
-    print(result)
-    return JsonResponse(result, safe=False)
+    result = models.SISRealtime.objects.filter(add_time__range=(start_date, end_date)).values_list(column_name)
+    data = json.dumps(list(result))
+    # print(data)
+    return JsonResponse(data, safe=False)
