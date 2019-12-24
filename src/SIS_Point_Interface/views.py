@@ -18,8 +18,6 @@ def get_sis_realtime_data(request):
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM `smcs_sis_realtime` where id = (SELECT MAX(id) FROM smcs_sis_realtime);")
     newest_record = cursor.fetchone()
-    # print(str(newest_record[1]))
-    # 这个地方需要考证
     return JsonResponse(newest_record, safe=False)
 
 
@@ -27,7 +25,6 @@ def get_sis_flag_data(request):
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM `smcs_sis_flag` where id = (SELECT MAX(id) FROM smcs_sis_flag);")
     newest_record = cursor.fetchone()
-    # 这个地方需要考证
     return JsonResponse(newest_record, safe=False)
 
 
@@ -43,17 +40,15 @@ def get_sis_column_list(request):
 
 def post_data_analysis_traffic_search(request):
     post_content = json.loads(request.body, encoding='utf-8')
-    # 这个地方要根据发来的三个值把数据掐出来
-    # print(post_content['startTime'])
-    # print(post_content['endTime'])
     start_date = datetime.strptime(post_content['startTime'], '%Y-%m-%d %H:%M:%S')
     end_date = datetime.strptime(post_content['endTime'], '%Y-%m-%d %H:%M:%S')
-    # print(type(start_date))
-    # print(type(end_date))
     p1 = re.compile(r'[(](.*?)[)]', re.S)
     column_name = re.findall(p1, post_content['node'][0]['label'])[0]
-    # print(column_name)
-    result = models.SISRealtime.objects.filter(add_time__range=(start_date, end_date)).values_list(column_name)
-    data = json.dumps(list(result))
-    # print(data)
-    return JsonResponse(data, safe=False)
+    data_series = models.SISRealtime.objects.filter(add_time__range=(start_date, end_date)).\
+        values_list('add_time', column_name)
+    # 这地方是建立一个dict，用于json化返回
+    data_series_dict = {}
+    for e in data_series:
+        data_series_dict[e[0].strftime('%Y-%m-%d %H:%M:%S')] = round(e[1], 3)
+    # print(data_series_dict)
+    return JsonResponse(data_series_dict, safe=False)
