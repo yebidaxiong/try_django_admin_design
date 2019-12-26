@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0ced64"],{"60c7":function(e,n,c){"use strict";c.r(n);var t=function(){var e=this,n=e.$createElement,c=e._self._c||n;return c("div",[e._v("我是开源协议")])},u=[],a={name:"OpenSourceLicense"},r=a,s=c("2877"),i=Object(s["a"])(r,t,u,!1,null,"4a0c84f0",null);n["default"]=i.exports}}]);
+//# sourceMappingURL=chunk-2d0ced64.9b18eeaa.js.map

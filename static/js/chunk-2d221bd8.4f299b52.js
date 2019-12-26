@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d221bd8"],{cc46:function(t,e,n){"use strict";n.r(e);var a=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",[n("el-col",{attrs:{span:3}},[n("div",{staticClass:"grid-content bg-purple"},[t._v("我是侧边栏位置")])]),n("el-col",{attrs:{span:21}},[n("div",{staticClass:"grid-content bg-purple-light"},[t._v("我是设备生命周期")])])],1)},s=[],c={name:"EquipmentHealth"},l=c,i=n("2877"),r=Object(i["a"])(l,a,s,!1,null,"6ab70934",null);e["default"]=r.exports}}]);
-//# sourceMappingURL=chunk-2d221bd8.4f299b52.js.map

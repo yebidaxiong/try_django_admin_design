@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0a479c"],{"0732":function(e,n,c){"use strict";c.r(n);var t=function(){var e=this,n=e.$createElement,c=e._self._c||n;return c("div",[e._v("我是资源概览")])},a=[],u={name:"GlobalResource"},l=u,o=c("2877"),r=Object(o["a"])(l,t,a,!1,null,"5b98bc49",null);n["default"]=r.exports}}]);
+//# sourceMappingURL=chunk-2d0a479c.c93b1582.js.map

@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d2176c9"],{c754:function(e,n,c){"use strict";c.r(n);var t=function(){var e=this,n=e.$createElement,c=e._self._c||n;return c("div",[e._v("我是设备统计")])},s=[],a={name:"DeviceAnalysis"},i=a,u=c("2877"),l=Object(u["a"])(i,t,s,!1,null,"54b3c802",null);n["default"]=l.exports}}]);
+//# sourceMappingURL=chunk-2d2176c9.6ac1944e.js.map

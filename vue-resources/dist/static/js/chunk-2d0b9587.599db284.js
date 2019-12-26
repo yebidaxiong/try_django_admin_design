@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b9587"],{"330a":function(n,e,t){"use strict";t.r(e);var s=function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("div",[n._v("我是区域统计")])},a=[],c={name:"DistrictAnalysis"},i=c,r=t("2877"),u=Object(r["a"])(i,s,a,!1,null,"5b83e6d6",null);e["default"]=u.exports}}]);
+//# sourceMappingURL=chunk-2d0b9587.599db284.js.map

@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0aab07"],{"11a2":function(e,n,t){"use strict";t.r(n);var a=function(){var e=this,n=e.$createElement;e._self._c;return e._m(0)},c=[function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",[t("h2",[e._v("存储计划")])])}],r={name:"StorageSetting"},u=r,i=t("2877"),s=Object(i["a"])(u,a,c,!1,null,"dd0c33b2",null);n["default"]=s.exports}}]);
-//# sourceMappingURL=chunk-2d0aab07.3196462f.js.map

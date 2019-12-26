@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # created by developer
+    'Global_interface',
     'Abstract_Base_Interface',
     'DCS_Point_Interface',
     'SIS_Point_Interface',
