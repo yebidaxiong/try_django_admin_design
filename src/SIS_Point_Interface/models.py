@@ -8,7 +8,6 @@ class SISPoint(PointBase):
     """
     SIS point attribute references
     """
-    is_tab = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "SIS测点属性表"
@@ -60,7 +59,6 @@ class SISPointOnMapping(models.Model):
 
 
 class SISRealtime(models.Model):
-
 
     add_time = models.DateTimeField(auto_now_add=True)
     arsa_41301 = models.FloatField(default=0, blank=True, null=True, verbose_name="测点当前值", help_text="测点当前值", )
@@ -114,7 +112,6 @@ class SISRealtime(models.Model):
 
 
 class SISFlag(models.Model):
-
 
     add_time = models.DateTimeField(auto_now_add=True)
     arsa_41301_flag = models.BooleanField(default=False, blank=True, null=True)

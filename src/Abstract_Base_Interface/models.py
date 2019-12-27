@@ -33,17 +33,27 @@ class PointBase(models.Model):
     """
     point base class, for DCS, SIS, GAS point class to inherit, no table built.
     """
+    # point attributes
     id = models.AutoField(primary_key=True)
     point_name = models.CharField(default="", max_length=30, blank=True, verbose_name="测点名称", help_text="测点名称")
     point_code = models.CharField(default="", max_length=30, blank=True, verbose_name="测点位号", help_text="测点位号")
-    # point_category = models.CharField()
     point_desc = models.TextField(default="", blank=True, verbose_name="测点描述", help_text="测点描述")
-    # flag of opc connection
-    point_connection_status = models.BooleanField(default=False, blank=True,
+    point_category = models.CharField(default="", max_length=30, blank=True,
+                                      verbose_name="测点所属类别", help_text="测点所属类别")
+    point_unit = models.CharField(default="", max_length=30, blank=True, verbose_name="测量单位", help_text="测量单位")
+
+    # flag of opc connection(cannot edit in admin， edit by opc readers)
+    point_connection_status = models.BooleanField(default=False, blank=True, editable=False,
                                                   verbose_name="测点连接状况", help_text="测点连接状况")
-    # flag of offering service to app
-    point_add_to_service = models.BooleanField(default=False, blank=True,
-                                               verbose_name="测点添加到界面", help_text="测点添加到界面")
+
+    # flag of added to dynamic card board(cannot edit in admin, edit by dynamic card board)
+    is_tab = models.BooleanField(default=False, blank=True, editable=False,
+                                 verbose_name="测点添加到动态卡片板", help_text="测点添加到动态卡片板")
+
+    # flag of offering service to app(cannot edit in admin, edit by some other item)
+    point_add_to_service = models.BooleanField(default=False, blank=True, editable=False,
+                                               verbose_name="测点添加到服务", help_text="测点添加到服务")
+    # point value related
     point_H_limitation = models.FloatField(default=0, blank=True, verbose_name="测点上限", help_text="测点上限", )
     point_L_limitation = models.FloatField(default=0, blank=True, verbose_name="测点下限", help_text="测点下限", )
     point_HH_limitation = models.FloatField(default=0, blank=True, verbose_name="测点上上限", help_text="测点上上限", )

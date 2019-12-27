@@ -10,15 +10,14 @@ class DCSPoint(PointBase):
     """
     DCS point attribute references
     """
-    DCS_point_category = models.CharField(max_length=30)  # should be foreign key of DCSPointCategory
 
     class Meta:
         verbose_name = "DCS测点属性"
         verbose_name_plural = verbose_name
         db_table = "SMCS_DCS_Point_Reference"
 
-    def __str__(self):
-        return PointBase.point_name
+    # def __str__(self):
+    #     return PointBase.point_name
 
 
 class DCSPointCategory(CategoryBase):
