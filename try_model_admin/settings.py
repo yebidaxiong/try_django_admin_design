@@ -55,13 +55,13 @@ INSTALLED_APPS = [
 
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True  # this is important with corheaders, APPS, MIDDLEWARE, AND THIS
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # add cors middleware
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-
-    'corsheaders.middleware.CorsMiddleware',
-
-    'django.middleware.common.CommonMiddleware',
     # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -133,7 +133,6 @@ USE_TZ = False
 USE_I18N = True
 
 USE_L10N = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

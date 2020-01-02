@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from GAS_Point_Interface.views import get_gas_realtime_data, get_gas_flag_data, get_gas_column_list
-from Global_interface.views import search_online_point_dp_drawer
+from Global_interface.views import search_online_point_dp_drawer, tabed_point_dp
 from SIS_Point_Interface.views import get_sis_realtime_data, get_sis_flag_data, get_sis_column_list, \
     post_data_analysis_traffic_search, post_data_analysis_alarm_search
 from try_model_admin import views
@@ -40,4 +40,5 @@ urlpatterns = [
 
     # for request for drawer from dynamic table in point monitor
     path('online_point_DT/', search_online_point_dp_drawer),
+    path('tabed_point/', tabed_point_dp),
 ]
