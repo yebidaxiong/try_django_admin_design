@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # cross domin request
     'corsheaders',
+    # scheduler
+    'django_apscheduler',
+    'Schedule_Job',
 
     # created by developer
     'Global_interface',
