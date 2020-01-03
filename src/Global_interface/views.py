@@ -53,29 +53,6 @@ def tabed_point_dp(request):
     for element in range(len(post_content)):
         post_content_list.append(post_content[element]['PointCode'])
     # print(post_content_list)
-
-    # cursor = connection.cursor()
-    # cursor.execute("SELECT NOW()")
-    # newest_record = cursor.fetchone()[0].strftime('%Y-%m-%d')
-    # query = "SELECT * FROM smcs_sis_realtime INTO OUTFILE 'D:/SMCS_DB_BACKUP/smcs_sis_realtime_" + newest_record + ".json';"
-    # cursor.execute(query)
-    # query = "SELECT * FROM smcs_sis_flag INTO OUTFILE 'D:/SMCS_DB_BACKUP/smcs_sis_flag_" + newest_record + ".json';"
-    # cursor.execute(query)
-    # query = "SELECT * FROM smcs_gas_realtime INTO OUTFILE 'D:/SMCS_DB_BACKUP/smcs_gas_realtime_" + newest_record + ".json';"
-    # cursor.execute(query)
-    # query = "SELECT * FROM smcs_gas_flag INTO OUTFILE 'D:/SMCS_DB_BACKUP/smcs_gas_flag_" + newest_record + ".json';"
-    # cursor.execute(query)
-    #
-    # query = "TRUNCATE TABLE smcs_sis_realtime;"
-    # cursor.execute(query)
-    # query = "TRUNCATE TABLE smcs_sis_flag;"
-    # cursor.execute(query)
-    # query = "TRUNCATE TABLE smcs_gas_realtime;"
-    # cursor.execute(query)
-    # query = "TRUNCATE TABLE smcs_gas_flag;"
-    # cursor.execute(query)
-
-
     # print(current_table_name)
     if current_table_name == 'SIS':
         SISPoint.objects.filter(point_code__in=post_content_list).update(is_tab=True)
