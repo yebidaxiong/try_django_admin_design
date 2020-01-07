@@ -16,24 +16,25 @@ from SIS_Point_Interface import models
 
 def get_sis_realtime_data(request):
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM `smcs_sis_realtime` where id = (SELECT MAX(id) FROM smcs_sis_realtime);")
+    cursor.execute("SELECT * FROM \"SMCS_SIS_REALTIME\" where id = (SELECT MAX(id) FROM \"SMCS_SIS_REALTIME\");")
     newest_record = cursor.fetchone()
     return JsonResponse(newest_record, safe=False)
 
 
 def get_sis_flag_data(request):
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM `smcs_sis_flag` where id = (SELECT MAX(id) FROM smcs_sis_flag);")
+    cursor.execute("SELECT * FROM \"SMCS_SIS_Flag\" where id = (SELECT MAX(id) FROM \"SMCS_SIS_Flag\");")
     newest_record = cursor.fetchone()
     return JsonResponse(newest_record, safe=False)
 
 
 def get_sis_column_list(request):
     cursor = connection.cursor()
-    cursor.execute("select COLUMN_NAME from information_schema.COLUMNS "
-                   "where table_name = 'smcs_sis_realtime' and table_schema = 'smcs';")
+    cursor.execute("SELECT column_name FROM information_schema.columns "
+                   "WHERE table_schema = 'public' and table_name='SMCS_SIS_REALTIME'")
     newest_record = cursor.fetchall()
     response_content = newest_record[2] + newest_record[3] + newest_record[4]
+    # print(response_content)
     return JsonResponse(response_content, safe=False)
     # print(newest_record[2:5])
 

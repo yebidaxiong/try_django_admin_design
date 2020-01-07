@@ -33,8 +33,8 @@ urlpatterns = [
     path('gas_flag_data/', get_gas_flag_data),
 
     # for sis and gas get column name
-    path('sis_column_list', get_sis_column_list),
-    path('gas_column_list', get_gas_column_list),
+    path('sis_column_list/', get_sis_column_list),
+    path('gas_column_list/', get_gas_column_list),
     path('data_analysis_traffic_search/', post_data_analysis_traffic_search),
     path('data_analysis_alarm_search/', post_data_analysis_alarm_search),
 

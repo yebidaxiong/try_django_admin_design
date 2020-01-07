@@ -10,6 +10,8 @@ from GAS_Point_Interface.models import GASPoint
 from SIS_Point_Interface.models import SISPoint
 
 # global table name during drawer opening
+from Schedule_Job.views import db_backup
+
 current_table_name = ''
 
 
@@ -47,6 +49,7 @@ def edit_current_table_name(table_name):
 # TODO: only add, no delete, 0 to 1 is ok, 1 to 0 is not, frontend: select but not submit(good),
 #  logically right currently
 def tabed_point_dp(request):
+
     post_content = json.loads(request.body, encoding='utf-8')
     # print(post_content) O(n) acceptable !
     post_content_list = []
@@ -63,6 +66,16 @@ def tabed_point_dp(request):
     elif current_table_name == 'DCS':
         DCSPoint.objects.filter(point_code__in=post_content_list).update(is_tab=True)
         DCSPoint.objects.exclude(point_code__in=post_content_list).update(is_tab=False)
+    else:
+        print("no match")
     edit_current_table_name('')
 
+    # 在这里加入返回所有is_tab等于1的三个表数据，拼接，发给前端，有一个逻辑要注意，保证在上次添加之后执行
+    # 这个列表保存全部is_tab为1的点，返回point_name, point_code, point_category
+    # global_selected_point = []
+    #
+    # global_selected_point.append(
+    #     list(SISPoint.objects.filter(is_tab=True).values_list('id', 'point_name', 'point_code',
+    #                                                           'point_category', 'point_unit')))
+    # print(global_selected_point)
     return JsonResponse("is_tab changed", safe=False)

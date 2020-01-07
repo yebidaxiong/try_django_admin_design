@@ -19,22 +19,22 @@ def db_backup(s):
     cursor = connection.cursor()
     cursor.execute("SELECT NOW()")
     newest_record = cursor.fetchone()[0].strftime('%Y-%m-%d')
-    query = "SELECT * FROM smcs_sis_realtime INTO OUTFILE 'D:/SMCS_DB_BACKUP/smcs_sis_realtime_" + newest_record + ".json';"
+    query = "COPY(SELECT * FROM \"SMCS_SIS_REALTIME\") TO 'D:/SMCS_DB_BACKUP/smcs_sis_realtime_" + newest_record + ".json';"
     cursor.execute(query)
-    query = "SELECT * FROM smcs_sis_flag INTO OUTFILE 'D:/SMCS_DB_BACKUP/smcs_sis_flag_" + newest_record + ".json';"
+    query = "COPY(SELECT * FROM \"SMCS_SIS_Flag\") TO 'D:/SMCS_DB_BACKUP/smcs_sis_flag_" + newest_record + ".json';"
     cursor.execute(query)
-    query = "SELECT * FROM smcs_gas_realtime INTO OUTFILE 'D:/SMCS_DB_BACKUP/smcs_gas_realtime_" + newest_record + ".json';"
+    query = "COPY(SELECT * FROM \"SMCS_GAS_REALTIME\") TO 'D:/SMCS_DB_BACKUP/smcs_gas_realtime_" + newest_record + ".json';"
     cursor.execute(query)
-    query = "SELECT * FROM smcs_gas_flag INTO OUTFILE 'D:/SMCS_DB_BACKUP/smcs_gas_flag_" + newest_record + ".json';"
+    query = "COPY(SELECT * FROM \"SMCS_GAS_Flag\") TO 'D:/SMCS_DB_BACKUP/smcs_gas_flag_" + newest_record + ".json';"
     cursor.execute(query)
 
-    query = "TRUNCATE TABLE smcs_sis_realtime;"
+    query = "TRUNCATE TABLE \"SMCS_SIS_REALTIME\";"
     cursor.execute(query)
-    query = "TRUNCATE TABLE smcs_sis_flag;"
+    query = "TRUNCATE TABLE \"SMCS_SIS_Flag\";"
     cursor.execute(query)
-    query = "TRUNCATE TABLE smcs_gas_realtime;"
+    query = "TRUNCATE TABLE \"SMCS_GAS_REALTIME\";"
     cursor.execute(query)
-    query = "TRUNCATE TABLE smcs_gas_flag;"
+    query = "TRUNCATE TABLE \"SMCS_GAS_Flag\";"
     cursor.execute(query)
 
 

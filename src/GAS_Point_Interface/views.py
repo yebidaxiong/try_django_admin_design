@@ -9,7 +9,7 @@ from django.db import connection
 
 def get_gas_realtime_data(request):
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM `smcs_gas_realtime` where id = (SELECT MAX(id) FROM smcs_gas_realtime);")
+    cursor.execute("SELECT * FROM \"SMCS_GAS_REALTIME\" where id = (SELECT MAX(id) FROM \"SMCS_GAS_REALTIME\");")
     newest_record = cursor.fetchone()
 
     # 这个地方需要考证
@@ -18,7 +18,7 @@ def get_gas_realtime_data(request):
 
 def get_gas_flag_data(request):
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM `smcs_gas_flag` where id = (SELECT MAX(id) FROM smcs_gas_flag);")
+    cursor.execute("SELECT * FROM \"SMCS_GAS_Flag\" where id = (SELECT MAX(id) FROM \"SMCS_GAS_Flag\");")
     newest_record = cursor.fetchone()
 
     # 这个地方需要考证
@@ -28,8 +28,8 @@ def get_gas_flag_data(request):
 # 这个地方先这么写，气体报警点名上来了再改
 def get_gas_column_list(request):
     cursor = connection.cursor()
-    cursor.execute("select COLUMN_NAME from information_schema.COLUMNS "
-                   "where table_name = 'smcs_gas_realtime' and table_schema = 'smcs';")
+    cursor.execute("SELECT column_name FROM information_schema.columns "
+                   "WHERE table_schema = 'public' and table_name='SMCS_GAS_REALTIME'")
     newest_record = cursor.fetchall()
     response_content = ()
     newest_record = newest_record[2:]
