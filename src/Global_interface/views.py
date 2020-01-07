@@ -49,7 +49,6 @@ def edit_current_table_name(table_name):
 # TODO: only add, no delete, 0 to 1 is ok, 1 to 0 is not, frontend: select but not submit(good),
 #  logically right currently
 def tabed_point_dp(request):
-
     post_content = json.loads(request.body, encoding='utf-8')
     # print(post_content) O(n) acceptable !
     post_content_list = []
@@ -72,10 +71,27 @@ def tabed_point_dp(request):
 
     # 在这里加入返回所有is_tab等于1的三个表数据，拼接，发给前端，有一个逻辑要注意，保证在上次添加之后执行
     # 这个列表保存全部is_tab为1的点，返回point_name, point_code, point_category
-    # global_selected_point = []
-    #
-    # global_selected_point.append(
-    #     list(SISPoint.objects.filter(is_tab=True).values_list('id', 'point_name', 'point_code',
-    #                                                           'point_category', 'point_unit')))
-    # print(global_selected_point)
-    return JsonResponse("is_tab changed", safe=False)
+
+    return JsonResponse(get_global_selected_point(), safe=False)
+
+
+def get_global_selected_point():
+    global_selected_point = []
+    for ele in range(len(list(SISPoint.objects.filter(is_tab=True).values_list('id', 'point_name', 'point_code',
+                                                                               'point_category', 'point_unit')))):
+        global_selected_point.append(
+            list(SISPoint.objects.filter(is_tab=True).values_list('id', 'point_name', 'point_code',
+                                                                  'point_category', 'point_unit'))[ele])
+
+    for ele in range(len(list(GASPoint.objects.filter(is_tab=True).values_list('id', 'point_name', 'point_code',
+                                                                               'point_category', 'point_unit')))):
+        global_selected_point.append(
+            list(GASPoint.objects.filter(is_tab=True).values_list('id', 'point_name', 'point_code',
+                                                                  'point_category', 'point_unit'))[ele])
+
+    for ele in range(len(list(DCSPoint.objects.filter(is_tab=True).values_list('id', 'point_name', 'point_code',
+                                                                               'point_category', 'point_unit')))):
+        global_selected_point.append(
+            list(DCSPoint.objects.filter(is_tab=True).values_list('id', 'point_name', 'point_code',
+                                                                  'point_category', 'point_unit'))[ele])
+    return global_selected_point
